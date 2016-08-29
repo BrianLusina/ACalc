@@ -10,7 +10,7 @@ The layout uses a **GridLayout** which will hold all the buttons of the calculat
 
 It is important to note that the WebView by default does not have javascript enabled. Use the code below to enable JavaScript in the WebView.
 
-```java
+``` java
 display = (WebView) findViewById(R.id.calculator_display);
 display.getSettings().setJavaScriptEnabled(true);
 ```
@@ -23,8 +23,27 @@ We will use one button listener for all of the buttons. For most of the buttons,
 
 The overridden `onClick` method will handle all the click events. It will check if the button being clicked is a cancel(clear) button or a backspace button or any other button. If the cancel(clear) is clicked, the display will be cleared. If the backspace button is clicked the last character in the display will be cleared. The rest of the buttons will be handled with the following snippet@:
 
-```java
+``` java
 default:
     output.append(((Button) v).getText());
 ```
 > A switch and case is being used and the default case handles every other button in the calculator
+
+
+### Updating the Webview
+
+The click listener calls a function to update the web view. This function creates a simple string of html to display everytime it is called.
+
+``` java
+StringBuilder builder = new StringBuilder();
+builder.append("<html><body>");
+builder.append("<script type=\"text/javascript\">document.write('");
+builder.append(output.toString());
+builder.append("');");
+builder.append("document.write('<br />=' + eval(\"");
+builder.append(output.toString());
+builder.append("\"));</script>");
+builder.append("</body></html>");
+
+display.loadData(builder.toString(), "application/xhtml", "UTF-8");
+```

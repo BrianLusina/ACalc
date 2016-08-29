@@ -2,6 +2,7 @@ package com.netlify.thelusina.acalc;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.StringBuilderPrinter;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -66,6 +67,20 @@ public class CalclulatorActivity extends AppCompatActivity implements View.OnCli
             default:
                 output.append(((Button) v).getText());
         }
+        updateWebView();
+    }
+    /**Updates the webview per click event of the calculator buttons*/
+    private void updateWebView() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("<html><body>");
+        builder.append("<script type=\"text/javascript\">document.write('");
+        builder.append(output.toString());
+        builder.append("');");
+        builder.append("document.write('<br />=' + eval(\"");
+        builder.append(output.toString());
+        builder.append("\"));</script>");
+        builder.append("</body></html>");
 
+        display.loadData(builder.toString(), "application/xhtml", "UTF-8");
     }
 }
