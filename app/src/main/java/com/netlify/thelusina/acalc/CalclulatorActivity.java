@@ -48,6 +48,13 @@ public class CalclulatorActivity extends AppCompatActivity implements View.OnCli
         negPosBtn= (Button)findViewById(R.id.negative_positive_btn_id);
         zeroBtn= (Button)findViewById(R.id.zero_btn_id);
         periodBtn= (Button)findViewById(R.id.period_btn_id);
+
+        //set the click listener for all buttons
+        Button[] button_array = new Button[]{settingsBtn, backspaceBtn,cancelBtn, divideBtn,percentBtn,righBrackbtn,leftBrackbtn,multiplyBtn,sevenBtn,eightBtn,nineBtn,subtractBtn,fourBtn,fiveBtn,six6Btn,plusBtn,oneBtn,twoBtn,threeBtn,equalsBtn,negPosBtn,zeroBtn,periodBtn};
+        /*set the click listeners for all buttons*/
+        for(Button btn: button_array){
+            btn.setOnClickListener(this);
+        }
     }
 
     @Override
