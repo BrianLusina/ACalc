@@ -14,10 +14,14 @@ public class CalclulatorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculator_activity);
         initViews();
+
+        /*enable JavaScript to WebView*/
+        display.getSettings().setJavaScriptEnabled(true);
     }
 
     /**Initialize UI views*/
     private void initViews() {
+        display = (WebView)findViewById(R.id.calc_display_id);
         settingsBtn = (Button)findViewById(R.id.settings_btn_id);
         backspaceBtn = (Button)findViewById(R.id.backspace_id);
         cancelBtn = (Button)findViewById(R.id.cancel_btn_id);
