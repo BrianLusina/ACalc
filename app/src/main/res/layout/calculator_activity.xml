@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.netlify.thelusina.acalc.CalclulatorActivity">
 
     <TextView
         android:id="@+id/calc_display_id"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="150dp" />
 
     <GridLayout
         android:layout_width="match_parent"
@@ -17,13 +18,88 @@
         android:columnCount="4"
         android:layout_gravity="center">
         <Button
+            android:id="@+id/settings_btn_id"
+            android:drawableStart="@android:drawable/ic_menu_manage"
+            android:drawableLeft="@android:drawable/ic_menu_manage"/>
+        <Button
             android:id="@+id/backspace_id"
-            android:text="@string/backspace_btn"/>
+            android:drawableStart="@android:drawable/ic_input_delete"
+            android:drawableLeft="@android:drawable/ic_input_delete"/>
         <Button
             android:id="@+id/cancel_btn_id"
-            android:text="@string/cancel_btn"/>
+            android:text="@string/cancel_btn" />
+
         <Button
             android:id="@+id/divide_btn_id"
-            android:text="@string/divide_btn"/>
+            android:text="@string/divide_btn" />
+
+        <!--2nd row-->
+        <Button
+            android:id="@+id/percent_btn_id"
+            android:text="@string/percent_btn"/>
+        <Button
+            android:id="@+id/right_brackets_btn_id"
+            android:text="@string/right_brackets_btn"/>
+        <Button
+            android:id="@+id/left_brackets_btn_id"
+            android:text="@string/left_brackets_btn"/>
+
+        <Button
+            android:id="@+id/multiply_id"
+            android:drawableStart="@android:drawable/ic_delete"
+            android:drawableLeft="@android:drawable/ic_delete"/>
+
+        <!--3rd row-->
+        <Button
+            android:id="@+id/seven_btn_id"
+            android:text="@string/seven_btn"/>
+        <Button
+            android:id="@+id/eight_btn_id"
+            android:text="@string/eight_btn"/>
+        <Button
+            android:id="@+id/nine_btn_id"
+            android:text="@string/nine_btn"/>
+        <Button
+            android:id="@+id/subtract_btn_id"
+            android:text="@string/subtract_btn"/>
+
+        <!--4th row-->
+        <Button
+            android:id="@+id/four_btn_id"
+            android:text="@string/four_btn"/>
+        <Button
+            android:id="@+id/five_btn_id"
+            android:text="@string/five_btn"/>
+        <Button
+            android:id="@+id/six_btn_id"
+            android:text="@string/six_btn"/>
+        <Button
+            android:id="@+id/plus_btn_id"
+            android:text="@string/plus_btn"/>
+
+        <!--5th row-->
+        <Button
+            android:id="@+id/one_btn_id"
+            android:text="@string/one_btn"/>
+        <Button
+            android:id="@+id/two_btn_id"
+            android:text="@string/two_btn"/>
+        <Button
+            android:id="@+id/three_btn_id"
+            android:text="@string/three_btn"/>
+        <Button
+            android:id="@+id/equals_btn_id"
+            android:text="@string/equals_btn"/>
+        <!--6th row-->
+        <Button
+            android:id="@+id/negative_positive_btn_id"
+            android:text="@string/neg_pos_btn"/>
+        <Button
+            android:id="@+id/zero_btn_id"
+            android:text="@string/zero_btn"/>
+        <Button
+            android:id="@+id/period_btn_id"
+            android:text="@string/period_btn"/>
+
     </GridLayout>
 </LinearLayout>
