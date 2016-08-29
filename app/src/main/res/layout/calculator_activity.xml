@@ -27,7 +27,7 @@
             android:drawableLeft="@android:drawable/ic_input_delete"/>
         <Button
             android:id="@+id/cancel_btn_id"
-            android:text="@string/cancel_btn" />
+            android:text="@string/cancel_btn"/>
 
         <Button
             android:id="@+id/divide_btn_id"
@@ -46,8 +46,7 @@
 
         <Button
             android:id="@+id/multiply_id"
-            android:drawableStart="@android:drawable/ic_delete"
-            android:drawableLeft="@android:drawable/ic_delete"/>
+            android:text="@string/multiply_btn"/>
 
         <!--3rd row-->
         <Button
