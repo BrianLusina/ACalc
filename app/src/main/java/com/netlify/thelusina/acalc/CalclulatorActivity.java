@@ -83,7 +83,7 @@ public class CalclulatorActivity extends AppCompatActivity implements View.OnCli
     /**Updates the webview per click event of the calculator buttons*/
     private void updateWebView() {
         StringBuilder builder = new StringBuilder();
-        builder.append("<html><body style='color:white'>");
+        builder.append("<html><body style='color:black'>");
         builder.append("<script type=\"text/javascript\">document.write('");
         builder.append(output.toString());
         builder.append("');");
