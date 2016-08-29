@@ -5,5 +5,25 @@
     android:layout_height="match_parent"
     tools:context="com.netlify.thelusina.acalc.CalclulatorActivity">
 
-    
+    <TextView
+        android:id="@+id/calc_display_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:columnCount="4"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/backspace_id"
+            android:text="@string/backspace_btn"/>
+        <Button
+            android:id="@+id/cancel_btn_id"
+            android:text="@string/cancel_btn"/>
+        <Button
+            android:id="@+id/divide_btn_id"
+            android:text="@string/divide_btn"/>
+    </GridLayout>
 </LinearLayout>

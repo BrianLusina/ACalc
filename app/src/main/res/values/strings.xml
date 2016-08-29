@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ACalc</string>
+    <string name="backspace_btn"><![CDATA[<]]></string>
+    <string name="cancel_btn">C</string>
+    <string name="divide_btn">/</string>
 </resources>
