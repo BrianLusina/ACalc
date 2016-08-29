@@ -2,12 +2,13 @@ package com.netlify.thelusina.acalc;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.StringBuilderPrinter;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 
 public class CalclulatorActivity extends AppCompatActivity implements View.OnClickListener{
+    private static final String CALCULATORACTIVITY_TAG = CalclulatorActivity.class.getSimpleName();
     private WebView display;
     private StringBuilder output;
     private Button settingsBtn, backspaceBtn,cancelBtn, divideBtn,percentBtn,righBrackbtn,leftBrackbtn,multiplyBtn,sevenBtn,eightBtn,nineBtn,subtractBtn,fourBtn,fiveBtn,six6Btn,plusBtn,oneBtn,twoBtn,threeBtn,equalsBtn,negPosBtn,zeroBtn,periodBtn;
@@ -75,6 +76,7 @@ public class CalclulatorActivity extends AppCompatActivity implements View.OnCli
 
             default:
                 output.append(((Button) v).getText());
+                Log.d(CALCULATORACTIVITY_TAG, output.toString());
         }
         updateWebView();
     }
