@@ -2,11 +2,11 @@ package com.netlify.thelusina.acalc;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class CalclulatorActivity extends AppCompatActivity {
-    private TextView display;
+    private WebView display;
     private Button settingsBtn, backspaceBtn,cancelBtn, divideBtn,percentBtn,righBrackbtn,leftBrackbtn,multiplyBtn,sevenBtn,eightBtn,nineBtn,subtractBtn,fourBtn,fiveBtn,six6Btn,plusBtn,oneBtn,twoBtn,threeBtn,equalsBtn,negPosBtn,zeroBtn,periodBtn;
 
     @Override
