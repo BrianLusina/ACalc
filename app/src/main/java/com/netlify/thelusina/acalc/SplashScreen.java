@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * Project: ACalc
@@ -16,6 +18,9 @@ import android.view.WindowManager;
  */
 public class SplashScreen extends AppCompatActivity {
     public static final String SPLASHSCREEN_TAG = SplashScreen.class.getSimpleName();
+    private TextView appName;
+    private ImageView appIcon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +49,8 @@ public class SplashScreen extends AppCompatActivity {
 
     /**initialize the UI controls*/
     private void initViews() {
-
+        appName = (TextView)findViewById(R.id.app_name_id);
+        appIcon = (ImageView)findViewById(R.id.app_icon_id);
     }
 
 

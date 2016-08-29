@@ -9,5 +9,11 @@ public class CalclulatorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculator_activity);
+        initViews();
+    }
+
+    /**Initialize UI views*/
+    private void initViews() {
+
     }
 }
