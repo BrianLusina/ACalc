@@ -2,11 +2,13 @@ package com.netlify.thelusina.acalc;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 
-public class CalclulatorActivity extends AppCompatActivity {
+public class CalclulatorActivity extends AppCompatActivity implements View.OnClickListener{
     private WebView display;
+    private StringBuilder output;
     private Button settingsBtn, backspaceBtn,cancelBtn, divideBtn,percentBtn,righBrackbtn,leftBrackbtn,multiplyBtn,sevenBtn,eightBtn,nineBtn,subtractBtn,fourBtn,fiveBtn,six6Btn,plusBtn,oneBtn,twoBtn,threeBtn,equalsBtn,negPosBtn,zeroBtn,periodBtn;
 
     @Override
@@ -45,5 +47,25 @@ public class CalclulatorActivity extends AppCompatActivity {
         negPosBtn= (Button)findViewById(R.id.negative_positive_btn_id);
         zeroBtn= (Button)findViewById(R.id.zero_btn_id);
         periodBtn= (Button)findViewById(R.id.period_btn_id);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.backspace_id:
+                if(output.length() > 0){
+                    output.deleteCharAt(output.length() - 1);
+                }
+                break;
+            case R.id.cancel_btn_id:
+                if(output.length() > 0){
+                    output.delete(0, output.length());
+                }
+                break;
+
+            default:
+                output.append(((Button) v).getText());
+        }
+
     }
 }
