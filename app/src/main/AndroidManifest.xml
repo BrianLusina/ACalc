@@ -14,7 +14,7 @@
         <!--TODO: Enable APP indexing-->
         <!--CALCULATOR activity-->
         <activity
-            android:name=".CalclulatorActivity"
+            android:name=".views.CalclulatorActivity"
             android:configChanges="orientation|screenSize"
 
             android:windowSoftInputMode="stateAlwaysHidden">

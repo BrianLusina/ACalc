@@ -1,4 +1,4 @@
-package com.netlify.thelusina.acalc;
+package com.netlify.thelusina.acalc.views;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
+
+import com.netlify.thelusina.acalc.R;
 
 public class CalclulatorActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String CALCULATORACTIVITY_TAG = CalclulatorActivity.class.getSimpleName();

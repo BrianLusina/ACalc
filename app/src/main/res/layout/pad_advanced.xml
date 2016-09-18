@@ -2,6 +2,7 @@
 <com.netlify.thelusina.acalc.widgets.PadLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/PadLayoutStyle.Advanced"
+
     android:background="@color/green_yellow">
 
     <Button
