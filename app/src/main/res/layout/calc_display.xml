@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:elevation="4dip">
 
-    <EditText
+    <com.netlify.thelusina.acalc.widgets.ACalcEditText
         android:id="@+id/calc_formula_id"
         style="@style/DisplayEditTextStyle.Formula"
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         android:textColor="@color/dark_gray"
         android:textIsSelectable="true" />
 
-    <EditText
+    <com.netlify.thelusina.acalc.widgets.ACalcEditText
         android:id="@+id/calc_result_id"
         style="@style/DisplayEditTextStyle.Result"
         android:layout_width="match_parent"

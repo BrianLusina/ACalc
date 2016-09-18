@@ -15,6 +15,8 @@ import android.view.MotionEvent;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.netlify.thelusina.acalc.R;
+
 /**
  * Project: ACalc
  * Package: com.netlify.thelusina.acalc.widgets
