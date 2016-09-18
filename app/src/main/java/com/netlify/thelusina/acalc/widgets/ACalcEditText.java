@@ -73,12 +73,12 @@ public class ACalcEditText extends EditText {
         super(context, attrs, defStyle);
 
         final TypedArray a = context.obtainStyledAttributes(
-                attrs, R.styleable.CalculatorEditText, defStyle, 0);
+                attrs, R.styleable.ACalcEditText, defStyle, 0);
         mMaximumTextSize = a.getDimension(
-                R.styleable.CalculatorEditText_maxTextSize, getTextSize());
+                R.styleable.ACalcEditText_maxTextSize, getTextSize());
         mMinimumTextSize = a.getDimension(
-                R.styleable.CalculatorEditText_minTextSize, getTextSize());
-        mStepTextSize = a.getDimension(R.styleable.CalculatorEditText_stepTextSize,
+                R.styleable.ACalcEditText_minTextSize, getTextSize());
+        mStepTextSize = a.getDimension(R.styleable.ACalcEditText_stepTextSize,
                 (mMaximumTextSize - mMinimumTextSize) / 3);
 
         a.recycle();

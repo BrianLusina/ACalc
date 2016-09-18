@@ -2,6 +2,7 @@
 <com.netlify.thelusina.acalc.widgets.NumericPadLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/PadLayoutStyle.Numeric"
+    android:background="@color/dark_gray"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:columnCount="3"
