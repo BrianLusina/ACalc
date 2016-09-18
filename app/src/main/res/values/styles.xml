@@ -47,6 +47,7 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
+
     <style name="DisplayEditTextStyle.Formula">
         <item name="android:paddingTop">48dip</item>
         <item name="android:paddingBottom">24dip</item>
@@ -128,6 +129,5 @@
         <item name="android:paddingRight">28dip</item>
         <item name="android:paddingEnd">28dip</item>
     </style>
-
 
 </resources>
