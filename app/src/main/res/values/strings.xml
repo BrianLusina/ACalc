@@ -22,4 +22,6 @@
     <string name="zero_btn">0</string>
     <string name="period_btn">.</string>
     <string name="multiply_btn">*</string>
+    <string name="eq">=</string>
+    <string name="desc_eq">equals</string>
 </resources>
