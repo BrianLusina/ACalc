@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/calc_display_layout"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="4dip">
+
+    <EditText
+        android:id="@+id/calc_formula_id"
+        style="@style/DisplayEditTextStyle.Formula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="none"
+        android:textColor="@color/dark_gray"
+        android:textIsSelectable="true" />
+
+    <EditText
+        android:id="@+id/calc_result_id"
+        style="@style/DisplayEditTextStyle.Result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calc_formula_id"
+        android:inputType="none"
+        android:textColor="@color/gray_a"
+        android:textIsSelectable="true" />
+
+</RelativeLayout>
