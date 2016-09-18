@@ -91,7 +91,7 @@ public class CalclulatorActivity extends AppCompatActivity implements View.OnCli
         builder.append(output.toString());
         builder.append("\"));</script>");
         builder.append("</body></html>");
-
+        Log.d(CALCULATORACTIVITY_TAG, builder.toString());
         display.loadData(builder.toString(), "application/xhtml", "UTF-8");
     }
 }
