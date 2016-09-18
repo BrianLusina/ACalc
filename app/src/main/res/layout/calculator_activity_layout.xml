@@ -28,6 +28,8 @@
 
         </LinearLayout>
 
+        <include layout="@layout/pad_advanced" />
+
     </com.netlify.thelusina.acalc.widgets.PadViewPager>
 
 </LinearLayout>
