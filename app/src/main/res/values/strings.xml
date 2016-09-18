@@ -24,4 +24,16 @@
     <string name="multiply_btn">*</string>
     <string name="eq">=</string>
     <string name="desc_eq">equals</string>
+    <string name="del">del</string>
+    <string name="desc_del">delete</string>
+    <string name="desc_clr">clear</string>
+    <string name="clr">clr</string>
+    <string name="desc_op_div">divide</string>
+    <string name="op_div">÷</string>
+    <string name="desc_op_mul">times</string>
+    <string name="op_mul">×</string>
+    <string name="desc_op_sub">subtract</string>
+    <string name="op_sub">-</string>
+    <string name="desc_op_add">plus</string>
+    <string name="op_add">+</string>
 </resources>
