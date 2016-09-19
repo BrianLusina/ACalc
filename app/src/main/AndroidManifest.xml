@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.netlify.thelusina.acalc">
 
+    <!--TODO: Enable APP indexing-->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,20 +12,21 @@
         android:fullBackupContent="true"
         android:theme="@style/AppTheme">
 
-        <!--TODO: Enable APP indexing-->
+        <activity
+            android:name=".InitialActivity"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_CALCULATOR" />
+            </intent-filter>
+        </activity>
+
         <!--CALCULATOR activity-->
         <activity
             android:name=".views.CalclulatorActivity"
             android:configChanges="orientation|screenSize"
-
-            android:windowSoftInputMode="stateAlwaysHidden">
-            <intent-filter >
-
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-                <category android:name="android.intent.category.APP_CALCULATOR"/>
-            </intent-filter>
-        </activity>
+            android:windowSoftInputMode="stateAlwaysHidden"/>
 
     </application>
 </manifest>
