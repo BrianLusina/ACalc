@@ -1,5 +1,7 @@
 package com.netlify.thelusina.acalc.presenter;
 
+import org.javia.arity.Symbols;
+
 /**
  * Project: ACalc
  * Package: com.netlify.thelusina.acalc.presenter
@@ -14,5 +16,11 @@ public class ExpressionEvaluator {
      * and use the remaining digits as guard digits to hide floating point precision errors */
     private static final int ROUNDING_DIGITS = Math.max(17 - MAX_DIGITS, 0);
 
+    private final Symbols mSymbols;
 
+    public ExpressionEvaluator(){
+        mSymbols = new Symbols();
+
+    }
+//END
 }
