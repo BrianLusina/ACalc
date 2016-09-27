@@ -1,4 +1,11 @@
 <resources>
+    <!-- Error displayed when expression evaluates to NaN. [CHAR_LIMIT=14] -->
+    <string name="error_nan">Not a number</string>
+    <!-- Error displayed when expression contains a syntax error. [CHAR_LIMIT=14] -->
+    <string name="error_syntax">Error</string>
+    <!-- Result displayed when expression evaluates to infinity. [CHAR_LIMIT=1] -->
+    <string name="inf">∞</string>
+
     <string name="app_name">ACalc</string>
     <string name="backspace_btn"><![CDATA[<]]></string>
     <string name="cancel_btn">C</string>
