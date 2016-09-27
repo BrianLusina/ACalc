@@ -41,7 +41,7 @@ public class ExpressionEvaluator {
 
         try {
             if (expr.length() == 0 || Double.valueOf(expr) != null) {
-                callback.onEvaluate(expr, null, Calculator.INVALID_RES_ID);
+                callback.onEvaluate(expr, null, ACalculator.INVALID_RES_ID);
                 return;
             }
         } catch (NumberFormatException e) {

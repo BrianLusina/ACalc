@@ -1,5 +1,7 @@
 package com.netlify.thelusina.acalc.presenter;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -7,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.netlify.thelusina.acalc.R;
+import com.netlify.thelusina.acalc.Utils;
 import com.netlify.thelusina.acalc.widgets.ACalcEditText;
 import com.netlify.thelusina.acalc.widgets.PadViewPager;
 
@@ -33,7 +36,7 @@ import android.widget.TextView;
  * Description:
  */
 
-public class ACalculator extends AppCompatActivity implements ACalcEditText.OnTextSizeChangeListener, View.OnLongClickListener{
+public abstract class ACalculator extends AppCompatActivity implements ACalcEditText.OnTextSizeChangeListener, View.OnLongClickListener{
 
     private static final String NAME = ACalculator.class.getName();
 

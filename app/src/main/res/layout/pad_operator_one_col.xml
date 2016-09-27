@@ -5,6 +5,7 @@
     android:columnCount="1"
     android:background="@color/dark_slate_gray"
     android:rowCount="5"
+    android:id="@+id/pad_operator"
     android:layout_height="match_parent"
     android:layout_width="150dp">
 
