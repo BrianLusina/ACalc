@@ -21,7 +21,7 @@ public class InitialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // If the device is Lollipop, start the lollipop activity
         if(Utils.hasLollipop()){
-            startActivity(new Intent(this, CalculatorLol.class));
+            startActivity(new Intent(this, CalculatorL.class));
         }else{
             startActivity(new Intent(this, CalculatorGB.class));
         }

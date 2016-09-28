@@ -1,4 +1,4 @@
-package com.android.calculator2;
+package com.netlify.thelusina.acalc;
 
 import android.content.Context;
 import android.graphics.drawable.ShapeDrawable;

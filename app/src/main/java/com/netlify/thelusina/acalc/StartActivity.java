@@ -1,5 +1,4 @@
-package com.android.calculator2;
-
+package com.netlify.thelusina.acalc;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

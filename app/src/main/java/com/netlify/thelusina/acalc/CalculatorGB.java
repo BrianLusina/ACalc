@@ -1,5 +1,4 @@
-package com.android.calculator2;
-
+package com.netlify.thelusina.acalc;
 import android.os.Bundle;
 import android.support.v4.view.ViewCompat;
 import android.view.View;

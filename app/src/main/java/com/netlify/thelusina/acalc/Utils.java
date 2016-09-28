@@ -1,5 +1,4 @@
-package com.android.calculator2;
-
+package com.netlify.thelusina.acalc;
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.os.Build;

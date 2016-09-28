@@ -1,4 +1,4 @@
-package com.android.calculator2;
+package com.netlify.thelusina.acalc;
 
 public interface AnimatorListenerWrapper {
     void onAnimationStart();
