@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/pad_advanced"
     style="@style/PadLayoutStyle.Advanced"
-    android:background="@color/pad_advanced_background_color">
+    android:background="@color/calculator_accent_color">
 
     <Button
         android:id="@+id/fun_sin"
