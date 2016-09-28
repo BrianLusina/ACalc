@@ -4,9 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-
-import com.netlify.thelusina.acalc.views.CalculatorGB;
-import com.netlify.thelusina.acalc.views.CalculatorLol;
+import com.netlify.thelusina.acalc.CalculatorGB;
+import com.netlify.thelusina.acalc.CalculatorL;
 
 /**
  * Project: ACalc
