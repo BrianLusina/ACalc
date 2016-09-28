@@ -16,14 +16,12 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.android.calculator2.CalculatorEditText.OnTextSizeChangeListener;
-import com.android.calculator2.CalculatorExpressionEvaluator.EvaluateCallback;
+import com.netlify.thelusina.acalc.CalculatorExpressionEvaluator.EvaluateCallback;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
 
 public abstract class Calculator extends Activity
-        implements OnTextSizeChangeListener, EvaluateCallback, OnLongClickListener {
+        implements CalculatorEditText.OnTextSizeChangeListener, EvaluateCallback, OnLongClickListener {
 
     private static final String NAME = Calculator.class.getName();
 
