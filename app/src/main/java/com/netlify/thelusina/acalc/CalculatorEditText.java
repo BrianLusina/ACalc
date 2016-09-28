@@ -1,8 +1,25 @@
-package com.netlify.thelusina.acalc.widgets;
+/*
+ * Copyright (C) 2014 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.android.calculator2;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
 import android.graphics.Rect;
 import android.os.Parcelable;
 import android.support.v7.view.ActionMode;
@@ -15,17 +32,7 @@ import android.view.MotionEvent;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.netlify.thelusina.acalc.R;
-
-/**
- * Project: ACalc
- * Package: com.netlify.thelusina.acalc.widgets
- * Created by lusinabrian on 18/09/16 at 21:28
- * <p>
- * Description:
- */
-
-public class ACalcEditText extends EditText {
+public class CalculatorEditText extends EditText {
 
     private final static ActionMode.Callback NO_SELECTION_ACTION_MODE_CALLBACK =
             new ActionMode.Callback() {
@@ -61,24 +68,24 @@ public class ACalcEditText extends EditText {
     private int mWidthConstraint = -1;
     private OnTextSizeChangeListener mOnTextSizeChangeListener;
 
-    public ACalcEditText(Context context) {
+    public CalculatorEditText(Context context) {
         this(context, null);
     }
 
-    public ACalcEditText(Context context, AttributeSet attrs) {
+    public CalculatorEditText(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ACalcEditText(Context context, AttributeSet attrs, int defStyle) {
+    public CalculatorEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
         final TypedArray a = context.obtainStyledAttributes(
-                attrs, R.styleable.ACalcEditText, defStyle, 0);
+                attrs, R.styleable.CalculatorEditText, defStyle, 0);
         mMaximumTextSize = a.getDimension(
-                R.styleable.ACalcEditText_maxTextSize, getTextSize());
+                R.styleable.CalculatorEditText_maxTextSize, getTextSize());
         mMinimumTextSize = a.getDimension(
-                R.styleable.ACalcEditText_minTextSize, getTextSize());
-        mStepTextSize = a.getDimension(R.styleable.ACalcEditText_stepTextSize,
+                R.styleable.CalculatorEditText_minTextSize, getTextSize());
+        mStepTextSize = a.getDimension(R.styleable.CalculatorEditText_stepTextSize,
                 (mMaximumTextSize - mMinimumTextSize) / 3);
 
         a.recycle();
@@ -174,7 +181,7 @@ public class ACalcEditText extends EditText {
         // but don't remove more than the available top padding otherwise clipping may occur.
         getPaint().getTextBounds("H", 0, 1, mTempRect);
 
-        final Paint.FontMetricsInt fontMetrics = getPaint().getFontMetricsInt();
+        final FontMetricsInt fontMetrics = getPaint().getFontMetricsInt();
         final int paddingOffset = -(fontMetrics.ascent + mTempRect.height());
         return super.getCompoundPaddingTop() - Math.min(getPaddingTop(), paddingOffset);
     }
@@ -183,12 +190,11 @@ public class ACalcEditText extends EditText {
     public int getCompoundPaddingBottom() {
         // Measure the bottom padding from the baseline of the text instead of the bottom, but don't
         // remove more than the available bottom padding otherwise clipping may occur.
-        final Paint.FontMetricsInt fontMetrics = getPaint().getFontMetricsInt();
+        final FontMetricsInt fontMetrics = getPaint().getFontMetricsInt();
         return super.getCompoundPaddingBottom() - Math.min(getPaddingBottom(), fontMetrics.descent);
     }
 
     public interface OnTextSizeChangeListener {
         void onTextSizeChanged(TextView textView, float oldSize);
     }
-
 }

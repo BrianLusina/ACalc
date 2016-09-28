@@ -1,4 +1,4 @@
-package com.netlify.thelusina.acalc;
+package com.android.calculator2;
 
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
@@ -10,6 +10,7 @@ import android.view.Window;
 @SuppressLint("NewApi")
 
 public class Utils {
+
     public static boolean hasHoneycomb() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB;
     }

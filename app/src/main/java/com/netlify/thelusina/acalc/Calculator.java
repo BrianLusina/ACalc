@@ -1,17 +1,20 @@
-package com.netlify.thelusina.acalc.presenter;
+/*
+ * Copyright (C) 2014 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.support.v7.app.AppCompatActivity;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.TextView;
-
-import com.netlify.thelusina.acalc.R;
-import com.netlify.thelusina.acalc.Utils;
-import com.netlify.thelusina.acalc.widgets.ACalcEditText;
-import com.netlify.thelusina.acalc.widgets.PadViewPager;
+package com.android.calculator2;
 
 import android.animation.Animator;
 import android.app.Activity;
@@ -29,16 +32,16 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-/**
- * Project: ACalc
- * Package: com.netlify.thelusina.acalc.presenter
- * Created by lusinabrian on 19/09/16 at 08:54
- * Description:
- */
 
-public abstract class ACalculator extends AppCompatActivity implements ACalcEditText.OnTextSizeChangeListener, View.OnLongClickListener{
+import com.android.calculator2.CalculatorEditText.OnTextSizeChangeListener;
+import com.android.calculator2.CalculatorExpressionEvaluator.EvaluateCallback;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.nineoldandroids.animation.ObjectAnimator;
 
-    private static final String NAME = ACalculator.class.getName();
+public abstract class Calculator extends Activity
+        implements OnTextSizeChangeListener, EvaluateCallback, OnLongClickListener {
+
+    private static final String NAME = Calculator.class.getName();
 
     // instance state keys
     private static final String KEY_CURRENT_STATE = NAME + "_currentState";
@@ -65,7 +68,7 @@ public abstract class ACalculator extends AppCompatActivity implements ACalcEdit
         @Override
         public void afterTextChanged(Editable editable) {
             setState(CalculatorState.INPUT);
-            mEvaluator.evaluate(editable, ACalculator.this);
+            mEvaluator.evaluate(editable, Calculator.this);
         }
     };
 
@@ -90,18 +93,18 @@ public abstract class ACalculator extends AppCompatActivity implements ACalcEdit
         public Editable newEditable(CharSequence source) {
             final boolean isEdited = mCurrentState == CalculatorState.INPUT
                     || mCurrentState == CalculatorState.ERROR;
-            return new ExpressionBuilder(source, mTokenizer, isEdited);
+            return new CalculatorExpressionBuilder(source, mTokenizer, isEdited);
         }
     };
 
     private CalculatorState mCurrentState;
-    private ExpressionTokenizer mTokenizer;
-    private ExpressionEvaluator mEvaluator;
+    private CalculatorExpressionTokenizer mTokenizer;
+    private CalculatorExpressionEvaluator mEvaluator;
 
     protected RelativeLayout mDisplayView;
-    protected ACalcEditText mFormulaEditText;
-    protected ACalcEditText mResultEditText;
-    private PadViewPager mPadViewPager;
+    protected CalculatorEditText mFormulaEditText;
+    protected CalculatorEditText mResultEditText;
+    private NineOldViewPager mPadViewPager;
     private View mDeleteButton;
     private View mClearButton;
     private View mEqualButton;
@@ -109,12 +112,12 @@ public abstract class ACalculator extends AppCompatActivity implements ACalcEdit
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.calculator_activity_layout);
+        setContentView(R.layout.activity_calculator);
 
-        mDisplayView = (RelativeLayout) findViewById(R.id.calc_display_layout);
-        mFormulaEditText = (ACalcEditText) findViewById(R.id.calc_formula_id);
-        mResultEditText = (ACalcEditText) findViewById(R.id.calc_result_id);
-        mPadViewPager = (PadViewPager) findViewById(R.id.pad_viewpager);
+        mDisplayView = (RelativeLayout) findViewById(R.id.display);
+        mFormulaEditText = (CalculatorEditText) findViewById(R.id.formula);
+        mResultEditText = (CalculatorEditText) findViewById(R.id.result);
+        mPadViewPager = (NineOldViewPager) findViewById(R.id.pad_pager);
         mDeleteButton = findViewById(R.id.del);
         mClearButton = findViewById(R.id.clr);
 
@@ -123,8 +126,8 @@ public abstract class ACalculator extends AppCompatActivity implements ACalcEdit
             mEqualButton = findViewById(R.id.pad_operator).findViewById(R.id.eq);
         }
 
-        mTokenizer = new ExpressionTokenizer(this);
-        mEvaluator = new ExpressionEvaluator(mTokenizer);
+        mTokenizer = new CalculatorExpressionTokenizer(this);
+        mEvaluator = new CalculatorExpressionEvaluator(mTokenizer);
 
         savedInstanceState = savedInstanceState == null ? Bundle.EMPTY : savedInstanceState;
         setState(CalculatorState.values()[
@@ -331,6 +334,4 @@ public abstract class ACalculator extends AppCompatActivity implements ACalcEdit
     }
 
     abstract void onResult(final String result);
-
-/*END*/
 }

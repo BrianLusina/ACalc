@@ -1,4 +1,20 @@
-package com.netlify.thelusina.acalc.widgets;
+/*
+ * Copyright (C) 2011 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.android.calculator2;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -48,10 +64,6 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
- * Project: ACalc
- * Package: com.netlify.thelusina.acalc.widgets
- * Created by lusinabrian on 18/09/16 at 21:09
- *
  * Layout manager that allows the user to flip left and right
  * through pages of data.  You supply an implementation of a
  * {@link PagerAdapter} to generate the pages that the view shows.
@@ -81,8 +93,7 @@ import java.util.Comparator;
  * {@sample development/samples/Support13Demos/src/com/example/android/supportv13/app/ActionBarTabsPager.java
  * complete}
  */
-
-public class CustomViewPager extends ViewGroup {
+public class NineOldViewPager extends ViewGroup {
     private static final String TAG = "CalculatorViewPager";
     private static final boolean DEBUG = false;
 
@@ -99,124 +110,6 @@ public class CustomViewPager extends ViewGroup {
     private static final int[] LAYOUT_ATTRS = new int[]{
             android.R.attr.layout_gravity
     };
-    /**
-     * {@inheritDoc}
-     *
-     * @param changed
-     * @param l
-     * @param t
-     * @param r
-     * @param b
-     */
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        final int count = getChildCount();
-        int width = r - l;
-        int height = b - t;
-        int paddingLeft = getPaddingLeft();
-        int paddingTop = getPaddingTop();
-        int paddingRight = getPaddingRight();
-        int paddingBottom = getPaddingBottom();
-        final int scrollX = getScrollX();
-
-        int decorCount = 0;
-
-        // First pass - decor views. We need to do this in two passes so that
-        // we have the proper offsets for non-decor views later.
-        for (int i = 0; i < count; i++) {
-            final View child = getChildAt(i);
-            if (child.getVisibility() != GONE) {
-                final LayoutParams lp = (LayoutParams) child.getLayoutParams();
-                int childLeft = 0;
-                int childTop = 0;
-                if (lp.isDecor) {
-                    final int hgrav = lp.gravity & Gravity.HORIZONTAL_GRAVITY_MASK;
-                    final int vgrav = lp.gravity & Gravity.VERTICAL_GRAVITY_MASK;
-                    switch (hgrav) {
-                        default:
-                            childLeft = paddingLeft;
-                            break;
-                        case Gravity.LEFT:
-                            childLeft = paddingLeft;
-                            paddingLeft += child.getMeasuredWidth();
-                            break;
-                        case Gravity.CENTER_HORIZONTAL:
-                            childLeft = Math.max((width - child.getMeasuredWidth()) / 2,
-                                    paddingLeft);
-                            break;
-                        case Gravity.RIGHT:
-                            childLeft = width - paddingRight - child.getMeasuredWidth();
-                            paddingRight += child.getMeasuredWidth();
-                            break;
-                    }
-                    switch (vgrav) {
-                        default:
-                            childTop = paddingTop;
-                            break;
-                        case Gravity.TOP:
-                            childTop = paddingTop;
-                            paddingTop += child.getMeasuredHeight();
-                            break;
-                        case Gravity.CENTER_VERTICAL:
-                            childTop = Math.max((height - child.getMeasuredHeight()) / 2,
-                                    paddingTop);
-                            break;
-                        case Gravity.BOTTOM:
-                            childTop = height - paddingBottom - child.getMeasuredHeight();
-                            paddingBottom += child.getMeasuredHeight();
-                            break;
-                    }
-                    childLeft += scrollX;
-                    child.layout(childLeft, childTop,
-                            childLeft + child.getMeasuredWidth(),
-                            childTop + child.getMeasuredHeight());
-                    decorCount++;
-                }
-            }
-        }
-
-        final int childWidth = width - paddingLeft - paddingRight;
-        // Page views. Do this once we have the right padding offsets from above.
-        for (int i = 0; i < count; i++) {
-            final View child = getChildAt(i);
-            if (child.getVisibility() != GONE) {
-                final LayoutParams lp = (LayoutParams) child.getLayoutParams();
-                ItemInfo ii;
-                if (!lp.isDecor && (ii = infoForChild(child)) != null) {
-                    int loff = (int) (childWidth * ii.offset);
-                    int childLeft = paddingLeft + loff;
-                    int childTop = paddingTop;
-                    if (lp.needsMeasure) {
-                        // This was added during layout and needs measurement.
-                        // Do it now that we know what we're working with.
-                        lp.needsMeasure = false;
-                        final int widthSpec = MeasureSpec.makeMeasureSpec(
-                                (int) (childWidth * lp.widthFactor),
-                                MeasureSpec.EXACTLY);
-                        final int heightSpec = MeasureSpec.makeMeasureSpec(
-                                (int) (height - paddingTop - paddingBottom),
-                                MeasureSpec.EXACTLY);
-                        child.measure(widthSpec, heightSpec);
-                    }
-                    if (DEBUG) Log.v(TAG, "Positioning #" + i + " " + child + " f=" + ii.object
-                            + ":" + childLeft + "," + childTop + " " + child.getMeasuredWidth()
-                            + "x" + child.getMeasuredHeight());
-                    child.layout(childLeft, childTop,
-                            childLeft + child.getMeasuredWidth(),
-                            childTop + child.getMeasuredHeight());
-                }
-            }
-        }
-        mTopPageBounds = paddingTop;
-        mBottomPageBounds = height - paddingBottom;
-        mDecorChildCount = decorCount;
-
-        if (mFirstLayout) {
-            scrollToItem(mCurItem, false, 0, false);
-        }
-        mFirstLayout = false;
-    }
-
 
     /**
      * Used to track what the expected number of items in the adapter should be.
@@ -396,9 +289,9 @@ public class CustomViewPager extends ViewGroup {
          * or when it is fully stopped/idle.
          *
          * @param state The new scroll state.
-         * @see CustomViewPager#SCROLL_STATE_IDLE
-         * @see CustomViewPager#SCROLL_STATE_DRAGGING
-         * @see CustomViewPager#SCROLL_STATE_SETTLING
+         * @see NineOldViewPager#SCROLL_STATE_IDLE
+         * @see NineOldViewPager#SCROLL_STATE_DRAGGING
+         * @see NineOldViewPager#SCROLL_STATE_SETTLING
          */
         public void onPageScrollStateChanged(int state);
     }
@@ -460,12 +353,12 @@ public class CustomViewPager extends ViewGroup {
     interface Decor {
     }
 
-    public CustomViewPager(Context context) {
+    public NineOldViewPager(Context context) {
         super(context);
         initViewPager();
     }
 
-    public CustomViewPager(Context context, AttributeSet attrs) {
+    public NineOldViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         initViewPager();
     }
@@ -497,6 +390,7 @@ public class CustomViewPager extends ViewGroup {
                     ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_YES);
         }
     }
+
     @Override
     protected void onDetachedFromWindow() {
         removeCallbacks(mEndScrollRunnable);
@@ -1611,6 +1505,114 @@ public class CustomViewPager extends ViewGroup {
         }
     }
 
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        final int count = getChildCount();
+        int width = r - l;
+        int height = b - t;
+        int paddingLeft = getPaddingLeft();
+        int paddingTop = getPaddingTop();
+        int paddingRight = getPaddingRight();
+        int paddingBottom = getPaddingBottom();
+        final int scrollX = getScrollX();
+
+        int decorCount = 0;
+
+        // First pass - decor views. We need to do this in two passes so that
+        // we have the proper offsets for non-decor views later.
+        for (int i = 0; i < count; i++) {
+            final View child = getChildAt(i);
+            if (child.getVisibility() != GONE) {
+                final LayoutParams lp = (LayoutParams) child.getLayoutParams();
+                int childLeft = 0;
+                int childTop = 0;
+                if (lp.isDecor) {
+                    final int hgrav = lp.gravity & Gravity.HORIZONTAL_GRAVITY_MASK;
+                    final int vgrav = lp.gravity & Gravity.VERTICAL_GRAVITY_MASK;
+                    switch (hgrav) {
+                        default:
+                            childLeft = paddingLeft;
+                            break;
+                        case Gravity.LEFT:
+                            childLeft = paddingLeft;
+                            paddingLeft += child.getMeasuredWidth();
+                            break;
+                        case Gravity.CENTER_HORIZONTAL:
+                            childLeft = Math.max((width - child.getMeasuredWidth()) / 2,
+                                    paddingLeft);
+                            break;
+                        case Gravity.RIGHT:
+                            childLeft = width - paddingRight - child.getMeasuredWidth();
+                            paddingRight += child.getMeasuredWidth();
+                            break;
+                    }
+                    switch (vgrav) {
+                        default:
+                            childTop = paddingTop;
+                            break;
+                        case Gravity.TOP:
+                            childTop = paddingTop;
+                            paddingTop += child.getMeasuredHeight();
+                            break;
+                        case Gravity.CENTER_VERTICAL:
+                            childTop = Math.max((height - child.getMeasuredHeight()) / 2,
+                                    paddingTop);
+                            break;
+                        case Gravity.BOTTOM:
+                            childTop = height - paddingBottom - child.getMeasuredHeight();
+                            paddingBottom += child.getMeasuredHeight();
+                            break;
+                    }
+                    childLeft += scrollX;
+                    child.layout(childLeft, childTop,
+                            childLeft + child.getMeasuredWidth(),
+                            childTop + child.getMeasuredHeight());
+                    decorCount++;
+                }
+            }
+        }
+
+        final int childWidth = width - paddingLeft - paddingRight;
+        // Page views. Do this once we have the right padding offsets from above.
+        for (int i = 0; i < count; i++) {
+            final View child = getChildAt(i);
+            if (child.getVisibility() != GONE) {
+                final LayoutParams lp = (LayoutParams) child.getLayoutParams();
+                ItemInfo ii;
+                if (!lp.isDecor && (ii = infoForChild(child)) != null) {
+                    int loff = (int) (childWidth * ii.offset);
+                    int childLeft = paddingLeft + loff;
+                    int childTop = paddingTop;
+                    if (lp.needsMeasure) {
+                        // This was added during layout and needs measurement.
+                        // Do it now that we know what we're working with.
+                        lp.needsMeasure = false;
+                        final int widthSpec = MeasureSpec.makeMeasureSpec(
+                                (int) (childWidth * lp.widthFactor),
+                                MeasureSpec.EXACTLY);
+                        final int heightSpec = MeasureSpec.makeMeasureSpec(
+                                (int) (height - paddingTop - paddingBottom),
+                                MeasureSpec.EXACTLY);
+                        child.measure(widthSpec, heightSpec);
+                    }
+                    if (DEBUG) Log.v(TAG, "Positioning #" + i + " " + child + " f=" + ii.object
+                            + ":" + childLeft + "," + childTop + " " + child.getMeasuredWidth()
+                            + "x" + child.getMeasuredHeight());
+                    child.layout(childLeft, childTop,
+                            childLeft + child.getMeasuredWidth(),
+                            childTop + child.getMeasuredHeight());
+                }
+            }
+        }
+        mTopPageBounds = paddingTop;
+        mBottomPageBounds = height - paddingBottom;
+        mDecorChildCount = decorCount;
+
+        if (mFirstLayout) {
+            scrollToItem(mCurItem, false, 0, false);
+        }
+        mFirstLayout = false;
+    }
 
     @Override
     public void computeScroll() {
@@ -2771,7 +2773,7 @@ public class CustomViewPager extends ViewGroup {
         @Override
         public void onInitializeAccessibilityEvent(View host, AccessibilityEvent event) {
             super.onInitializeAccessibilityEvent(host, event);
-            event.setClassName(CustomViewPager.class.getName());
+            event.setClassName(NineOldViewPager.class.getName());
             final AccessibilityRecordCompat recordCompat = AccessibilityRecordCompat.obtain();
             recordCompat.setScrollable(canScroll());
             if (event.getEventType() == AccessibilityEventCompat.TYPE_VIEW_SCROLLED
@@ -2785,7 +2787,7 @@ public class CustomViewPager extends ViewGroup {
         @Override
         public void onInitializeAccessibilityNodeInfo(View host, AccessibilityNodeInfoCompat info) {
             super.onInitializeAccessibilityNodeInfo(host, info);
-            info.setClassName(CustomViewPager.class.getName());
+            info.setClassName(NineOldViewPager.class.getName());
             info.setScrollable(canScroll());
             if (canScrollHorizontally(1)) {
                 info.addAction(AccessibilityNodeInfoCompat.ACTION_SCROLL_FORWARD);
@@ -2876,7 +2878,7 @@ public class CustomViewPager extends ViewGroup {
         int childIndex;
 
         public LayoutParams() {
-            super(MATCH_PARENT, MATCH_PARENT);
+            super(FILL_PARENT, FILL_PARENT);
         }
 
         public LayoutParams(Context context, AttributeSet attrs) {
@@ -2899,5 +2901,4 @@ public class CustomViewPager extends ViewGroup {
             return llp.position - rlp.position;
         }
     }
-
 }

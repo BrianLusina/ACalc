@@ -1,32 +1,46 @@
-package com.netlify.thelusina.acalc.presenter;
+/*
+ * Copyright (C) 2014 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-import com.netlify.thelusina.acalc.R;
+package com.android.calculator2;
 
 import org.javia.arity.Symbols;
 import org.javia.arity.SyntaxException;
 import org.javia.arity.Util;
 
-/**
- * Project: ACalc
- * Package: com.netlify.thelusina.acalc.presenter
- * Created by lusinabrian on 19/09/16 at 09:00
- */
+public class CalculatorExpressionEvaluator {
 
-public class ExpressionEvaluator {
-    /**Maximum number of digits to display*/
-    private static final int MAX_DIGITS= 12;
+    /**
+     * The maximum number of significant digits to display.
+     */
+    private static final int MAX_DIGITS = 12;
 
-    /**a {@link Double} has at least 17 significant digits, we display the first {@link #MAX_DIGITS}
-     * and use the remaining digits as guard digits to hide floating point precision errors */
+    /**
+     * A {@link Double} has at least 17 significant digits, we show the first {@link #MAX_DIGITS}
+     * and use the remaining digits as guard digits to hide floating point precision errors.
+     */
     private static final int ROUNDING_DIGITS = Math.max(17 - MAX_DIGITS, 0);
 
     private final Symbols mSymbols;
-    private final ExpressionTokenizer mTokenizer;
+    private final CalculatorExpressionTokenizer mTokenizer;
 
-    public ExpressionEvaluator(ExpressionTokenizer tokenizer){
+    public CalculatorExpressionEvaluator(CalculatorExpressionTokenizer tokenizer) {
         mSymbols = new Symbols();
         mTokenizer = tokenizer;
     }
+
     public void evaluate(CharSequence expr, EvaluateCallback callback) {
         evaluate(expr.toString(), callback);
     }
@@ -41,7 +55,7 @@ public class ExpressionEvaluator {
 
         try {
             if (expr.length() == 0 || Double.valueOf(expr) != null) {
-                callback.onEvaluate(expr, null, ACalculator.INVALID_RES_ID);
+                callback.onEvaluate(expr, null, Calculator.INVALID_RES_ID);
                 return;
             }
         } catch (NumberFormatException e) {
@@ -58,7 +72,7 @@ public class ExpressionEvaluator {
                 // errors; rounding the result by dropping N digits of precision.
                 final String resultString = mTokenizer.getLocalizedExpression(
                         Util.doubleToString(result, MAX_DIGITS, ROUNDING_DIGITS));
-                callback.onEvaluate(expr, resultString, ACalculator.INVALID_RES_ID);
+                callback.onEvaluate(expr, resultString, Calculator.INVALID_RES_ID);
             }
         } catch (SyntaxException e) {
             callback.onEvaluate(expr, null, R.string.error_syntax);
@@ -68,5 +82,4 @@ public class ExpressionEvaluator {
     public interface EvaluateCallback {
         public void onEvaluate(String expr, String result, int errorResourceId);
     }
-//END
 }

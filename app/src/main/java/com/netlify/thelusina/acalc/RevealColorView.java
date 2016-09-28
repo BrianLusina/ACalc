@@ -1,6 +1,5 @@
-package com.netlify.thelusina.acalc.widgets;
+package com.android.calculator2;
 
-import android.view.ViewGroup;
 import android.content.Context;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
@@ -9,21 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
-import com.netlify.thelusina.acalc.Utils;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
 
-/**
- * ACalc
- * com.netlify.thelusina.acalc.widgets
- * Created by lusinabrian on 27/09/16.
- * Description:
- */
-
 public class RevealColorView extends ViewGroup {
+
     private static final float SCALE = 8f;
 
     private View inkView;
