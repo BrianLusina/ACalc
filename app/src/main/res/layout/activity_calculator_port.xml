@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.android.calculator2.CalculatorPadViewPager
+    <com.netlify.thelusina.acalc.CalculatorPadViewPager
         android:id="@+id/pad_pager"
         android:layout_width="match_parent"
         android:layout_height="0dip"
@@ -30,6 +30,6 @@
 
         <include layout="@layout/pad_advanced" />
 
-    </com.android.calculator2.CalculatorPadViewPager>
+    </com.netlify.thelusina.acalc.CalculatorPadViewPager>
 
 </LinearLayout>
