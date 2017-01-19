@@ -1,5 +1,6 @@
 # ACalc
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/66f0f898f6764c218d4f9a1d9747c863)](https://www.codacy.com/app/BrianLusina/ACalc?utm_source=github.com&utm_medium=referral&utm_content=BrianLusina/ACalc&utm_campaign=badger)
 [![Build Status](https://www.bitrise.io/app/f996e7da793738a4.svg?token=7jh9OYZX4q24D7R8w94Q_g&branch=master)](https://www.bitrise.io/app/f996e7da793738a4)
 
 This is a basic Android calculator.
