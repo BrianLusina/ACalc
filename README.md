@@ -1,5 +1,7 @@
 # ACalc
 
+[![Build Status](https://www.bitrise.io/app/f996e7da793738a4.svg?token=7jh9OYZX4q24D7R8w94Q_g&branch=master)](https://www.bitrise.io/app/f996e7da793738a4)
+
 This is a basic Android calculator.
 
 ## The Layout
